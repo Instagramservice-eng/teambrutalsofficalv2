@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Brutals</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",system-ui,sans-serif;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at top,#0b0f1e,#000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:white;
+}
+
+/* Floating glow */
+.light{
+  position:absolute;
+  width:380px;
+  height:380px;
+  background:radial-gradient(circle,#ff2e2e,transparent 70%);
+  filter:blur(120px);
+  animation:float 7s infinite alternate;
+}
+.light.two{
+  background:radial-gradient(circle,#25D366,transparent 70%);
+  top:60%;
+  left:60%;
+  animation-delay:3s;
+}
+@keyframes float{
+  to{transform:translateY(-90px);}
+}
+
+/* Card */
+.card{
+  position:relative;
+  width:94%;
+  max-width:460px;
+  padding:40px 30px;
+  border-radius:36px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  box-shadow:0 0 120px rgba(255,60,60,.45);
+}
+
+/* ================= TB LOGO ================= */
+
+.logo-wrap{
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.tb-logo{
+  font-size:92px;
+  font-weight:900;
+  letter-spacing:-14px;
+  display:inline-block;
+  position:relative;
+  animation:logoFloat 4s ease-in-out infinite;
+}
+
+.tb-logo span:first-child{
+  background:linear-gradient(135deg,#ffb300,#ff8c00,#ffe082);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 4px 0 #b36b00,
+    0 14px 35px rgba(255,170,0,.95);
+}
+
+.tb-logo span:last-child{
+  background:linear-gradient(135deg,#ffffff,#bdbdbd,#f5f5f5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 4px 0 #7a7a7a,
+    0 14px 35px rgba(230,230,230,.9);
+}
+
+.tb-logo::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-140%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.7),transparent);
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0%{left:-140%}
+  60%{left:140%}
+  100%{left:140%}
+}
+
+@keyframes logoFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* Text */
+h1{text-align:center;font-size:30px;}
+.sub{text-align:center;opacity:.85;margin:8px 0 22px;}
+
+ul{margin-bottom:22px;}
+li{
+  list-style:none;
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:8px;
+}
+
+/* Buttons */
+.btn{
+  display:block;
+  padding:15px;
+  border-radius:30px;
+  text-align:center;
+  font-weight:700;
+  margin-bottom:14px;
+  text-decoration:none;
+  transition:.25s;
+}
+.btn:hover{transform:translateY(-3px);}
+
+.red{
+  background:linear-gradient(135deg,#ff2e2e,#ffb347);
+  color:#300;
+  box-shadow:0 0 45px rgba(255,80,80,.95);
+}
+
+.green{
+  background:linear-gradient(135deg,#25D366,#7CFFB2);
+  color:#003b1e;
+  box-shadow:0 0 45px rgba(37,211,102,.95);
+}
+
+.blue{
+  background:linear-gradient(135deg,#4facfe,#00f2fe);
+  color:#002a3a;
+  box-shadow:0 0 45px rgba(79,172,254,.95);
+}
+
+.switch{
+  background:none;
+  border:1px solid rgba(255,255,255,.25);
+  color:white;
+}
+
+/* Pages */
+.page{display:none;}
+.page.active{display:block;}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+  margin-top:14px;
+}
+
+/* Music button */
+.music{
+  position:absolute;
+  top:16px;
+  right:16px;
+  font-size:20px;
+  cursor:pointer;
+  opacity:.75;
+}
+.music:hover{opacity:1;}
+</style>
+</head>
+
+<body>
+
+<div class="light"></div>
+<div class="light two"></div>
+
+<div class="card">
+
+<!-- MUSIC -->
+<div class="music" onclick="toggleMusic()">🎵</div>
+<audio id="bgm" loop>
+  <!-- Put your local file: music.mp3 -->
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= GUILD PAGE ================= -->
+<div class="page active" id="guild">
+
+  <div class="logo-wrap">
+    <div class="tb-logo">
+      <span>T</span><span>B</span>
+    </div>
+  </div>
+
+  <h1>TEAM BRUTALS</h1>
+  <div class="sub">Official Guild • Respect • Power • Loyalty</div>
+
+  <ul>
+    <li>⚔️ Respect all guild members</li>
+    <li>🔥 Stay active & loyal</li>
+    <li>🚫 No abuse or toxicity</li>
+    <li>🎮 Follow guild strategies</li>
+  </ul>
+
+  <!-- CHANGE THIS -->
+  <a href="https://chat.whatsapp.com/Ex2JrmYzHqC91O3hiY7nFS?mode=gi_t" class="btn green">
+    💬 Join Guild WhatsApp
+  </a>
+
+  <a href="https://wa.me/919207238523" class="btn blue">
+    👑 Guild Leader — TB VINCENZO
+  </a>
+
+  <a href="https://wa.me/918921584368" class="btn green">
+    🌐 Web Designer — TB SMOKEY
+  </a>
+
+  <a href="#" class="btn switch" onclick="openSupport()">
+    🛡 Report / Complaint / Compliment
+  </a>
+</div>
+
+<!-- ================= SUPPORT PAGE ================= -->
+<div class="page" id="support">
+
+  <div class="logo-wrap">
+    <div class="tb-logo">
+      <span>T</span><span>B</span>
+    </div>
+  </div>
+
+  <h1>Support Center</h1>
+  <div class="sub">We listen. We act.</div>
+
+  <a href="https://wa.me/918921584368?text=Hello%20Team%20Brutals,%20I%20want%20to%20report%20an%20issue."
+     class="btn red">
+    🚨 Report / Complaint
+  </a>
+
+  <a href="https://wa.me/918921584368?text=Hello%20Team%20Brutals,%20I%20want%20to%20send%20a%20compliment."
+     class="btn green">
+    💚 Send Compliment
+  </a>
+
+  <a href="#" class="btn switch" onclick="openGuild()">
+    ⬅ Back to Guild
+  </a>
+</div>
+
+<div class="footer">
+  © Team Brutals • Designed by TB SMOKEY 🔥
+</div>
+
+</div>
+
+<script>
+function openSupport(){
+  guild.classList.remove("active");
+  support.classList.add("active");
+}
+function openGuild(){
+  support.classList.remove("active");
+  guild.classList.add("active");
+}
+
+/* Music */
+let playing=false;
+function toggleMusic(){
+  const m=document.getElementById("bgm");
+  playing ? m.pause() : m.play();
+  playing=!playing;
+}
+</script>
+
+</body>
+  </html>
